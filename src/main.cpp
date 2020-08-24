@@ -6,10 +6,7 @@
 
 auto Comp_Vals_Deadzone(int x) -> int
 {
-    if (x >= misc::ctrlDeadzone)
-        return x;
-    else
-        return 0;
+   return ((x >= misc::ctrlDeadzone) ? x : 0);
 }
 
 auto Drive_Ctrl() -> void
