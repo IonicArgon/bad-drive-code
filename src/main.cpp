@@ -4,9 +4,9 @@
 
 #define DRIVE_ARCADE
 
-auto Compare_Vals(int x, int y) -> int
+auto Comp_Vals_Deadzone(int x) -> int
 {
-    if (x >= y)
+    if (x >= misc::ctrlDeadzone)
         return x;
     else
         return 0;
@@ -17,13 +17,13 @@ auto Drive_Ctrl() -> void
     while (true)
     {
 #if defined DRIVE_ARCADE
-        int power {Compare_Vals(ctrl_master.get_analog(misc::ctrlAnalog::E_CONTROLLER_ANALOG_RIGHT_Y))}, 
-            turn {Compare_Vals(ctrl_master.get_analog(misc::ctrlAnalog::E_CONTROLLER_ANALOG_RIGHT_X))};
+        int power {Comp_Vals_Deadzone(ctrl_master.get_analog(misc::ctrlAnalog::E_CONTROLLER_ANALOG_RIGHT_Y))}, 
+            turn {Comp_Vals_Deadzone(ctrl_master.get_analog(misc::ctrlAnalog::E_CONTROLLER_ANALOG_RIGHT_X))};
         Set_Powers(power + turn, power - turn);
 
 #elif defined DRIVE_TANK
-        int power_left {Compare_Vals(ctrl_master.get_analog(misc::ctrlAnalog::E_CONTROLLER_ANALOG_LEFT_Y))}, 
-            power_right {Compare_Vals(ctrl_master.get_analog(misc::ctrlAnalog::E_CONTROLLER_ANALOG_RIGHT_Y))};
+        int power_left {Comp_Vals_Deadzone(ctrl_master.get_analog(misc::ctrlAnalog::E_CONTROLLER_ANALOG_LEFT_Y))}, 
+            power_right {Comp_Vals_Deadzone(ctrl_master.get_analog(misc::ctrlAnalog::E_CONTROLLER_ANALOG_RIGHT_Y))};
         Set_Powers(power_left, power_right);
 #endif
         pros::delay(5);
