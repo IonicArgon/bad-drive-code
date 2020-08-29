@@ -4,6 +4,7 @@
 #define OBJECTS_H
 
     auto Set_Powers(int left, int right) -> void;
+    auto Set_Intk_Convy(int intake, int convy) -> void;
 
     extern pros::Motor drvLB;
     extern pros::Motor drvLM;

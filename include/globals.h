@@ -22,6 +22,8 @@ namespace motors
     using enc = pros::motor_encoder_units_e;
     // Type alias for motor cartridge enums.
     using cart = pros::motor_gearset_e;
+    // Type alias for motor break mode enums.
+    using brk = pros::motor_brake_mode_e;
 
     // Drive motor, left side, rear.
     inline constexpr int drvLB{18};
@@ -37,9 +39,9 @@ namespace motors
     inline constexpr int drvRF{10};
 
     // Conveyor motor
-    inline constexpr int convyPort{2};
+    inline constexpr int convyPort{7};
     // Intake motor
-    inline constexpr int intkPort{1};
+    inline constexpr int intkPort{6};
 }
 
 #endif
